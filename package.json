@@ -1,6 +1,6 @@
 {
   "name": "b-jsonp",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Simple, efficient, and tiny jsonp library for the browser.",
   "main": "dist/jsonp.min.js",
   "scripts": {

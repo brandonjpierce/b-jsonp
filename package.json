@@ -6,7 +6,23 @@
   "scripts": {
     "test": "zuul --local -- tests/*.js"
   },
-  "author": "Brandon Pierce <brandon@brandonjpierce.com>",
+  "directories": {
+    "tests": "tests"
+  },
+  "keywords": [
+    "jsonp",
+    "browser"
+  ],
+  "author": {
+    "name": "Brandon Pierce",
+    "email": "brandon@brandonjpierce.com",
+    "url": "http://brandonjpierce.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/brandonjpierce/b-jsonp.git"
+  },
+  "homepage": "https://github.com/brandonjpierce/b-jsonp",
   "license": "MIT",
   "devDependencies": {
     "gulp": "^3.9.0",

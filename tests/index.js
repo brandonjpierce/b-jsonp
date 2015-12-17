@@ -1,7 +1,7 @@
-const tape = require('tape');
-const qs = require('querystring');
-const jsonp = require('../src');
-const endpoint = 'http://jsfiddle.net/echo/jsonp/';
+var tape = require('tape');
+var qs = require('querystring');
+var jsonp = require('../src');
+var endpoint = 'https://jsfiddle.net/echo/jsonp/';
 
 tape('basic jsonp call', function(t) {
   t.plan(2);

@@ -1,18 +1,18 @@
 ui: tape
 browsers:
+  - name: microsoftedge
+    version: latest
   - name: chrome
-    version: 26..latest
+    version: latest
   - name: firefox
-    version: 21..latest
+    version: latest
   - name: safari
-    version: 5..latest
+    version: latest
   - name: ie
-    version: 6..latest
+    version: 8..latest
   - name: opera
-    version: 11..latest
+    version: latest
   - name: iphone
-    version: 4.3..latest
-  - name: ipad
-    version: 4.3..latest
+    version: latest
   - name: android
-    version: 4.0..latest
+    version: latest

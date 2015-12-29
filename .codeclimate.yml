@@ -1,0 +1,7 @@
+languages:
+  JavaScript: true
+exclude_paths:
+- tests/*
+- gulpfile.js
+- package.json
+- README.md

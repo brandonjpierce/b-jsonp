@@ -11,9 +11,29 @@
   /**
    * Private variables
    */
-  var root = window;
+  var root = this;
   var doc = document;
-  var counter = 0;
+  var enc = encodeURIComponent;
+
+  /**
+   * Generate a random prefix identifier
+   * @method rand
+   * @param  {Integer} length The length of the random string
+   * @return {String} Our randomly generated string
+   */
+  function rand(length) {
+    length = length || 5;
+
+    var text = '';
+    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var possibleLength = possible.length;
+
+    for (var i = 0; i < length; i++) {
+      text += possible.charAt(Math.floor(Math.random() * possibleLength));
+    }
+
+    return text;
+  }
 
   /**
    * Determines if a value is a function
@@ -58,10 +78,10 @@
   /**
    * Generates a temporary function name for global jsonp function
    * @param  {String} prefix A prefix for the function name
-   * @return {String} The prefix + counter
+   * @return {String} The prefix + random identifier
    */
   function getTmpName(prefix) {
-    return prefix + (++counter);
+    return prefix + '__' + rand();
   }
 
   /**
@@ -77,7 +97,7 @@
 
     for (var key in data) {
       if (data.hasOwnProperty(key)) {
-        query += encodeURIComponent(key) + '=' + encodeURIComponent(data[key]) + '&';
+        query += enc(key) + '=' + enc(data[key]) + '&';
       }
     }
 
@@ -117,21 +137,21 @@
 
     var timeout = opts.timeout || 15000;
     var prefix = opts.prefix || '__jsonp';
-    var method = opts.name || 'callback';
-    var tmpName = getTmpName(prefix);
-    var query = getUrl(url, data, method, tmpName);
+    var param = opts.param || 'callback';
+    var name = opts.name || getTmpName(prefix);
+    var query = getUrl(url, data, param, name);
 
     // create timeout for request
     var timer = setTimeout(function() {
-      cb(new Error('jsonp request for ' + tmpName + ' timed out.'), null);
       clearTimer(timer);
+      cb(new Error('jsonp request for ' + name + ' timed out.'), null);
     }, timeout);
 
     // create our temporary global function
-    root[tmpName] = function(response) {
-      cb(null, response);
+    root[name] = function(response) {
+      root[name] = null;
       clearTimer(timer);
-      root[tmpName] = null;
+      cb(null, response);
     }
 
     // add script to document and setup error handler

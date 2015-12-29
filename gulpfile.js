@@ -29,7 +29,7 @@ gulp.task('build', function() {
         comments: false
       }
     }))
-    .pipe(rename('jsonp.min.js'))
+    .pipe(rename('b-jsonp.min.js'))
     .pipe(gulp.dest('./dist/'));
 });
 

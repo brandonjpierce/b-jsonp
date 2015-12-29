@@ -2,7 +2,7 @@
   "name": "b-jsonp",
   "version": "1.0.3",
   "description": "Simple, efficient, and tiny jsonp library for the browser.",
-  "main": "dist/jsonp.min.js",
+  "main": "dist/b-jsonp.min.js",
   "scripts": {
     "test-local": "zuul --local -- tests/*.js",
     "test": "zuul -- tests/*.js"

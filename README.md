@@ -1,5 +1,7 @@
 # b-jsonp
 
+[![npm](https://img.shields.io/npm/dt/b-jsonp.svg?style=flat-square)]()
+
 A simple, efficient, and small jsonp library for the browser.
 
 ## Usage

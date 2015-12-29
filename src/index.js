@@ -143,15 +143,15 @@
 
     // create timeout for request
     var timer = setTimeout(function() {
-      clearTimer(timer);
       cb(new Error('jsonp request for ' + name + ' timed out.'), null);
+      clearTimer(timer);
     }, timeout);
 
     // create our temporary global function
     root[name] = function(response) {
-      root[name] = null;
-      clearTimer(timer);
       cb(null, response);
+      clearTimer(timer);
+      root[name] = null;
     }
 
     // add script to document and setup error handler

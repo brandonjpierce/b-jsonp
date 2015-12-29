@@ -16,7 +16,7 @@ test('data', function(t) {
   jsonp(endpoint, data, function(err, response) {
     t.ok(response, 'Response is not null');
     t.error(err, 'Error is null');
-    t.deepEqual(data, response, 'Response data is equal to what we sent in request');
+    t.deepEqual(data, response, 'Response data is equal to what was sent in request');
     t.end();
   });
 });
@@ -27,14 +27,14 @@ test('named callback', function(t) {
   jsonp(endpoint, data, { name: 'namedCb' }, function(err, response) {
     t.ok(response, 'Response is not null');
     t.error(err, 'Error is null');
-    t.deepEqual(data, response, 'Response data is equal to what we sent in request');
+    t.deepEqual(data, response, 'Response data is equal to what was sent in request');
     t.end();
   });
 });
 
 test('timeout', function(t) {
   jsonp(endpoint, { delay: 2 }, { timeout: 1000 }, function(err, response) {
-    t.ok(err instanceof Error, 'Error in callback is not null and instance of Error');
+    t.ok(err instanceof Error, 'Error in callback, is not null, and instance of Error');
     t.end();
   });
-})
+});

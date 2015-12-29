@@ -11,9 +11,8 @@
   /**
    * Private variables
    */
-  var root = this;
+  var root = window;
   var doc = document;
-  var enc = encodeURIComponent;
 
   /**
    * Generate a random prefix identifier
@@ -58,7 +57,7 @@
     script.src = src;
     script.async = true;
     script.defer = true;
-    script.onload = removeScript;
+    // script.onload = removeScript;
     target.appendChild(script);
 
     return script;
@@ -97,7 +96,7 @@
 
     for (var key in data) {
       if (data.hasOwnProperty(key)) {
-        query += enc(key) + '=' + enc(data[key]) + '&';
+        query += encodeURIComponent(key) + '=' + encodeURIComponent(data[key]) + '&';
       }
     }
 
